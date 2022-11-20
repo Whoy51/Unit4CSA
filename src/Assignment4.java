@@ -7,6 +7,7 @@ class Assignment4
 
         Scanner scan = new Scanner(System.in);
 
+        System.out.println("Type the message to be shortened");
         String str = scan.nextLine().toLowerCase();
 
         // Algorithm 1
@@ -27,10 +28,33 @@ class Assignment4
             algo1 += str.substring(i, i + 1);
         }
 
-        System.out.println(vowels);
-        System.out.println(repeats);
-        System.out.println(algo1);
-    }
+        System.out.println("\nAlgorithm 1");
+        System.out.println("Vowels removed:" + vowels);
+        System.out.println("Repeats removed: " + repeats);
+        System.out.println("Algorithm 1 message: " + algo1);
+        System.out.println("Algorithm 1 characters saved: " + (str.length() - algo1.length()) + "\n");
 
+
+        // Algorithm 2
+        String algo2 = "";
+        for (int i = 0; i < str.length(); i++){
+            int count = 0;
+            if (!algo2.contains(str.substring(i, i + 1)) && !str.substring(i, i + 1).equals(" ")){
+                for (int k = 0; k<str.length(); k++){
+                    if (str.substring(i, i + 1).equals(str.substring(k, k + 1))){
+                        count++;
+                    }
+
+                }
+                algo2 += count + str.substring(i, i + 1);
+            }
+
+
+        }
+        System.out.println("Algorithm 2");
+        System.out.println("Unique characters found: " + algo2.length() / 2);
+        System.out.println("Algorithm 2 message: " + algo2);
+        System.out.println("Algorithm 2 characters saved: " + (str.length() - algo2.length()));
+    }
 
 }
